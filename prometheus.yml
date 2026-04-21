@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s  # 每 15 秒拉取一次指标
+  evaluation_interval: 15s  # 每 15 秒评估一次告警规则
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+rule_files:
+  # - "alert_rules.yml"
+
+scrape_configs:
+  - job_name: 'moon'  # 任务名称
+    metrics_path: '/actuator/prometheus'  # Prometheus metrics 端点
+    static_configs:
+      - targets: ['localhost:8080']  # 应用地址和端口
